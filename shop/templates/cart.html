@@ -1,0 +1,142 @@
+{% include 'header.html' %}
+
+<section class="h-100 h-custom" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card">
+          <div class="card-body p-4">
+
+            <div class="row">
+
+              <div class="col-lg-7">
+                <h5 class="mb-3"><a href="{% url 'home' %}" class="text-body"><i
+                      class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                <hr>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div>
+
+                    <h4 class="mb-0">Total Items {{size}}</h4>
+                  </div>
+
+                </div>
+
+
+                {% for m in mp %}
+                <div class="card mb-3 mb-lg-0">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex flex-row align-items-center">
+                        <div>
+                          <img
+                            src="{{m.product.image_url}}"
+                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                        </div>
+                        <div class="ms-3">
+                          <h5>{{m.product.title}}</h5>
+                          <p class="small mb-0">{{m.product.category}}</p>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center">
+                        <div style="width: 50px;">
+                          <h5 class="fw-normal mb-0">{{m.total_product}}</h5>
+                        </div>
+                        <div style="width: 80px;">
+                          <h5 class="mb-0">${{m.product.discount_price}}</h5>
+                        </div>
+                        <a href="{% url 'delete' product_id=m.product.id %}" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+
+              </div>
+
+              <div class="col-lg-5 ">
+                <div class="payment py-5 ">
+                    <div class="row py-5">
+                      <div class="col-6 text-center">
+                        <span class="fw-bold">Total</span>
+                        </div>
+                     <div class="col-6 text-center">
+                        <span class="text-success">${{sum_of_products}}</span>
+                        </div>
+
+     <div id="paypal-button-container" class="py-3" ></div>
+      <form action="{% url 'payment_complete' %}" method="post"  id="payment">
+                    {% csrf_token %}
+      </form>
+        <!-- Sample PayPal credentials (client-id) are included -->
+        <script src="https://www.paypal.com/sdk/js?client-id=AYKEPHXDJeiNv_ZAB6N4tdGkZBwb5vVFDd9JKqx3tIUVKoEejJ0mWdTlpmvxwZBT0vU_cr0f-jibiug0" data-sdk-integration-source="integrationbuilder"></script>
+        <script>
+
+          const paypalButtonsComponent = paypal.Buttons({
+              // optional styling for buttons
+              // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
+              style: {
+                color: "gold",
+                shape: "rect",
+                layout: "vertical"
+              },
+
+              // set up the transaction
+              createOrder: (data, actions) => {
+                  // pass in any options from the v2 orders create call:
+                  // https://developer.paypal.com/api/orders/v2/#orders-create-request-body
+                  const createOrderPayload = {
+                      purchase_units: [
+                          {
+                              amount: {
+                                  value: "88.44"
+                              }
+                          }
+                      ]
+                  };
+
+                  return actions.order.create(createOrderPayload);
+              },
+
+              // finalize the transaction
+              onApprove: (data, actions) => {
+                  const captureOrderHandler = (details) => {
+                      const payerName = details.payer.name.given_name;
+                      console.log('Transaction completed');
+                      document.getElementById('payment').submit();
+                  };
+
+                  return actions.order.capture().then(captureOrderHandler);
+              },
+
+              // handle unrecoverable errors
+              onError: (err) => {
+                  console.error('An error prevented the buyer from checking out with PayPal');
+              }
+          });
+
+          paypalButtonsComponent
+              .render("#paypal-button-container")
+              .catch((err) => {
+                  console.error('PayPal Buttons failed to render');
+              });
+
+
+        </script>
+
+                      </div>
+
+
+
+</div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% include 'footer.html' %}

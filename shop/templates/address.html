@@ -1,0 +1,66 @@
+{% include 'header.html' %}
+
+<div class="justify-content-center" >
+  <div class="col-md-9 justify-content-center address">
+    <div class="card card-custom pb-4">
+      <div class="card-body mt-0 mx-5">
+        <div class="text-center mb-3 pb-2 mt-3">
+          <h4 style="color: #495057 ;">Delivery Details</h4>
+        </div>
+
+        <form class="mb-0" id="pnt" action="{% url 'payment_complete' %}" method="POST">
+        {% csrf_token %}
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" id="form9Example1" class="form-control input-custom" />
+                <label class="form-label" for="form9Example1">First name</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" id="form9Example2" class="form-control input-custom" />
+                <label class="form-label" for="form9Example2">Last name</label>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" id="form9Example3" class="form-control input-custom" />
+                <label class="form-label" for="form9Example3">City</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" id="form9Example4" class="form-control input-custom" />
+                <label class="form-label" for="form9Example4">Zip</label>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" id="form9Example6" class="form-control input-custom" />
+                <label class="form-label" for="form9Example6">Address</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="email" id="typeEmail" class="form-control input-custom" />
+                <label class="form-label" for="typeEmail">Email</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="float-end ">
+            <!-- Submit button -->
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'footer.html' %}

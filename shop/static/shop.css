@@ -1,0 +1,57 @@
+body{
+font-family: 'Montserrat', sans-serif;
+}
+
+.address{
+padding-left:20%;
+}
+
+.discount-price{
+font-weight:900;
+}
+.pagination {
+margin-left:500px;
+}
+
+.pricing-tag{
+font-family:'Montserrat', sans-serif;
+
+}
+.value{
+color:green;
+font-family:"Montserrat-bold";
+}
+
+.view-img{
+height:400px;
+width:400px;
+}
+
+.product-img{
+height:200px;
+}
+
+.product-detail{
+margin-top:40%;
+font-family:'Montserrat', sans-serif;
+}
+.product-category{
+margin-bottom:5%;
+font-size:25px;
+}
+.product-description{
+margin-bottom:7%;
+}
+
+.main-container{
+background-color:#EFF5F5;
+margin-bottom: 3em;
+
+}
+.slide-container{
+margin-top:3em;
+margin-bottom:2em;
+}
+.login h1{
+font-weight:Bold;
+}

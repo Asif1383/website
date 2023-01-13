@@ -1,0 +1,28 @@
+{% include 'header.html' %}
+<div class="container">
+    <div class="row ms-5">
+    <div class="col-lg-6">
+        <img class="view-img mt-5" src="{{product.image_url}}">
+    </div>
+    <div class="col-lg-6">
+        <div class="product-detail">
+                 <div class="product-category">
+                {{product.category}}
+            </div>
+            <div class="product-description">
+                {{product.description}}
+            </div>
+
+                <a href="{% url 'add_to_cart' product_id=product.id %}" class="mb-2 btn btn-lg me-3 btn btn-warning ">Add to Cart</a>
+                <a href="{% url 'show_cart' %}" class="mb-2 me-2 btn btn-lg btn-warning">Buy</a>
+
+
+
+        </div>
+
+
+    </div>
+        </div>
+</div>
+
+{% include 'footer.html' %}
