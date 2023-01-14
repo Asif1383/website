@@ -76,9 +76,15 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 ################intial####################
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://eccomerce_mh1a_user:YpBDwj3IMq1XkjwtwRBohIp0yP32wjuQ@dpg-ceva80h4reb4easpcqlg-a'
-                '/eccomerce_mh1a'),
+    'default': {
+        #'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '3Fk8FdrSRLJUeMAr0EMy',
+        'HOST': 'containers-us-west-40.railway.app',
+        'PORT': '5438',
+    }
 }
 
 # Password validation
