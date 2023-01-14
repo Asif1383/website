@@ -15,7 +15,7 @@ import dj_database_url
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-
+import mimetypes
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -131,3 +131,5 @@ if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'shop.MyUser'
+
+mimetypes.add_type("text/css", ".css", True)
