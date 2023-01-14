@@ -85,7 +85,8 @@ def show_cart(request):
 def register(request):
     register_form = Register()
     if request.method == "POST":
-        if request.POST.get('email'):
+        if request.POST.get('email') == User.objects.filter_by(email=request.POST.get('email')):
+
             messages.info(request, "User already exist")
             return redirect('login_user')
         new_user = User(
