@@ -1,7 +1,7 @@
+import request
 from django.shortcuts import render, redirect
 from .models import Product, CartItem, MultipleProduct
 from django.core.paginator import Paginator
-import request
 from .forms import Register
 # from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -85,8 +85,10 @@ def show_cart(request):
 def register(request):
     register_form = Register()
     if request.method == "POST":
+        print("Helllllllllllllllllo")
+        print(User.objects.filter_by(email=request.POST.get('email')))
         if request.POST.get('email') == User.objects.filter_by(email=request.POST.get('email')):
-
+            print("Hello")
             messages.info(request, "User already exist")
             return redirect('login_user')
         new_user = User(
@@ -130,6 +132,7 @@ def login_user(request):
         if user is not None:
             login(request, user)
             if not request.POST.get('remember'):
+
                 request.session.set_expiry(0)
             return redirect('home')
         messages.error(request, "Entered data is invalid")
