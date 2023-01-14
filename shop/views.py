@@ -1,18 +1,18 @@
-import request
+
 from django.shortcuts import render, redirect
 from .models import Product, CartItem, MultipleProduct
 from django.core.paginator import Paginator
 from .forms import Register
-# from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import MyUser as User
 from django.contrib.messages import constants as messages
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
-
+import request
 # Create your views here.
 def index(request):
+    print(request.user)
     product_name = request.GET.get('item_name')
     if product_name != '' and product_name is not None:
         product = Product.objects.filter(title=product_name)
@@ -86,8 +86,8 @@ def register(request):
     register_form = Register()
     if request.method == "POST":
         print("Helllllllllllllllllo")
-        print(User.objects.filter_by(email=request.POST.get('email')))
-        if request.POST.get('email') == User.objects.filter_by(email=request.POST.get('email')):
+        # print(User.objects.filter(email=request.POST.get('email')).first())
+        if  User.objects.filter(email=request.POST.get('email')).first():
             print("Hello")
             messages.info(request, "User already exist")
             return redirect('login_user')

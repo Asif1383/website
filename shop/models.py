@@ -16,7 +16,7 @@ class Product(models.Model):
 
 
 class CartItem(models.Model):
-    cart_id = models.IntegerField(primary_key=True,)
+    cart_id = models.AutoField(primary_key=True,)
     cart_to_user = models.OneToOneField('MyUser', on_delete=models.CASCADE)
 
 
