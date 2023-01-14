@@ -132,5 +132,5 @@ if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'shop.MyUser'
-
+WHITENOISE_USE_FINDERS = True
 mimetypes.add_type("text/css", ".css", True)
