@@ -134,4 +134,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'shop.MyUser'
 WHITENOISE_USE_FINDERS = True
 mimetypes.add_type("text/css", ".css", True)
-CSRF_TRUSTED_ORIGINS = ["https://website-production-d8f9.up.railway.app/"]
+CSRF_TRUSTED_ORIGINS = ["https://website-production-d8f9.up.railway.app"]
