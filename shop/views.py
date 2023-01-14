@@ -19,11 +19,11 @@ def index(request):
     else:
         product = Product.objects.all()
     # print(product)
-    paginator = Paginator(product, 8)
+    # paginator = Paginator(product, 8)
 
     page = request.GET.get('page')
     # print(page)
-    product = paginator.get_page(page)
+    # product = paginator.get_page(page)
 
     context = {
         'products': product,
