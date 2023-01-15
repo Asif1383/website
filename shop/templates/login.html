@@ -6,14 +6,9 @@
   <!-- Email input -->
   {% csrf_token %}
   {% for message in messages %}
-  {% if message.ERROR %}
-      <div class="text-center  py-3">{{message}} </div>
 
-  {% endif %}
-  {% if message.INFO %}
-      <div class="text-center  py-3">{{message}} </div>
+      <div class="text-center alert alert-warning py-3">{{message}} </div>
 
-  {% endif %}
   {% endfor %}
   <div class="form-outline mb-4">
     <input type="email" id="form2Example1" class="form-control" name="email" />
