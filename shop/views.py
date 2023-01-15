@@ -42,6 +42,9 @@ def view(request, product_id):
 # Add to Cart
 @login_required()
 def add_to_cart(request, product_id):
+
+    if request.user.is_anonymous:
+        return redirect('login_user')
     user = User.objects.filter(id=request.user.id).first()
     cart = CartItem.objects.filter(cart_to_user=user).first()
     # print(cart)

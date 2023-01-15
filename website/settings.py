@@ -16,6 +16,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 import mimetypes
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +28,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'website.wsgi.application'
 ################intial####################
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
@@ -120,7 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
+if not DEBUG:  # Tell Django to copy statics to the `staticfiles` directory
     # in your application directory on Render.
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -135,3 +135,4 @@ AUTH_USER_MODEL = 'shop.MyUser'
 WHITENOISE_USE_FINDERS = True
 mimetypes.add_type("text/css", ".css", True)
 CSRF_TRUSTED_ORIGINS = ["https://website-production-d8f9.up.railway.app"]
+LOGIN_URL = "/login/"
