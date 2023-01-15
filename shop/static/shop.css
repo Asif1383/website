@@ -24,7 +24,7 @@ font-family:"Montserrat-bold";
 
 .view-img{
 height:400px;
-width:400px;
+width:60%;
 }
 
 .product-img{
@@ -54,4 +54,7 @@ margin-bottom:2em;
 }
 .login h1{
 font-weight:Bold;
+}
+@media (max-width=400px){
+
 }
