@@ -10,7 +10,7 @@ padding-left:20%;
 font-weight:900;
 }
 .pagination {
-margin-left:500px;
+margin-left:40%;
 }
 
 .pricing-tag{
@@ -54,7 +54,4 @@ margin-bottom:2em;
 }
 .login h1{
 font-weight:Bold;
-}
-@media (max-width=400px){
-
 }
